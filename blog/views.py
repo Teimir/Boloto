@@ -1,4 +1,3 @@
-from django.core import serializers
 from django.shortcuts import render, redirect
 from .models import New, Newa
 from .forms import NewForm
@@ -43,3 +42,5 @@ def boloto(request):
         'title': 'Главная страница'
     }
     return render(request, 'blog/boloto.html', data)
+
+
