@@ -10,10 +10,10 @@ class NewForm(ModelForm):
         widgets = {
             'title': TextInput(attrs={
                 'class': "form-control",
-                'placeholder': "Заголовок",
+                'placeholder': "Заголовок квака",
             }),
             'text': Textarea(attrs={
                 'class': "form-control",
-                'placeholder': "Заголовок",
+                'placeholder': "Квакнуть",
             }),
         }

@@ -1,3 +1,4 @@
+from django.core import serializers
 from django.shortcuts import render, redirect
 from .models import New, Newa
 from .forms import NewForm
@@ -35,8 +36,11 @@ def contacts(request):
 
 
 def boloto(request):
+    News = Newa.objects.all()
+    News = list(reversed(News))
+    print(News)
     data = {
-        'news': Newa.objects.all(),
+        'news': News,
         'title': 'Главная страница'
     }
     return render(request, 'blog/boloto.html', data)
