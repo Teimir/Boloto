@@ -1,0 +1,11 @@
+{% extends 'blog/main.html' %}
+{% block main_section %}
+    {% for post in news %}
+        <div class="alert alert-light">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text }}</p>
+            <span class="text-muted"><b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}</span>
+        </div>
+
+    {% endfor %}
+{% endblock main_section %}
