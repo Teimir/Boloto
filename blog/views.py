@@ -38,7 +38,6 @@ def contacts(request):
 def boloto(request):
     News = Newa.objects.all()
     News = list(reversed(News))
-    print(News)
     data = {
         'news': News,
         'title': 'Главная страница'
