@@ -25,6 +25,7 @@
                     </div>
                     <nav class="menu_body">
                         <ul class="menu_list">
+                            <!--
                             <li>
                                 <a class="menu_item" href="/other">
                                     <div class="menu_item_logo"></div>
@@ -43,6 +44,7 @@
                                     <div class="menu_item_text">Профиль</div>
                                 </a>
                             </li>
+                            --->
                             <li>
                                 <a class="menu_item" href="/boloto">
                                     <div class="menu_item_logo"></div>
@@ -61,13 +63,21 @@
                                     <div class="menu_item_text">Написать пост</div>
                                 </a>
                             </li>
+                            <!--
                             <li>
                                 <a class="menu_item" href="/settings">
                                     <div class="menu_item_logo"></div>
                                     <div class="menu_item_text">Настройки</div>
                                 </a>
                             </li>
-                             <li>
+                            --->
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <div class="menu_item_logo"></div>
+                                <a class="nav-link" href="/profile"><div class="menu_item_text">{{request.user}}</div></a>
+                            </li>
+                            {% else %}
+                            <li>
                                 <a class="menu_item" href="/login">
                                     <div class="menu_item_logo"></div>
                                     <div class="menu_item_text">Войти</div>
@@ -76,9 +86,10 @@
                             <li>
                                 <a class="menu_item" href="/signup">
                                     <div class="menu_item_logo"></div>
-                                    <div class="menu_item_text">Зарегистрироваться</div>
+                                    <div class="menu_item_text">Создать аккаунт</div>
                                 </a>
                             </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
