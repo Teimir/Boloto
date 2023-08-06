@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/other.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header_container">
+                <!--<a href="" class="header_logo"></a>-->
+                <div class="header_menu menu">
+                    <div class="menu_icon">
+                        <span></span>
+                    </div>
+                    <nav class="menu_body">
+                        <ul class="menu_list">
+                            <li>
+                                <a class="menu_item" href="/other">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Иное</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/message">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Сообщения</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/profile">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Профиль</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/boloto">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Лента</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/contacts">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">О нас</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/create">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Написать пост</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/settings">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Настройки</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/login">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Войти</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/signup">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Зарегистрироваться</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            {% block main_section %}
+            {% endblock %}
+        </main>
+    </div>
+
+
+    <script src="{% static 'js/header.js' %}"></script>
+</body>
+
+</html>
