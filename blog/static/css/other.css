@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Skellymman";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/static/font/Skellyman.ttf");
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    line-height: 1;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: var(--back-color);
+    /*font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;*/
+    font-family: "Skellymman", serif;
+}
+
+body._lock {
+    overflow: hidden;
+}
+
+.wrapper {
+    min-height: 100%;
+    background-color: var(--back-color);
+    /*background-image: linear-gradient(#303030 1px, transparent 0px), linear-gradient(90deg, #303030 1px, transparent 0px);
+    background-size: 20px 20px, 20px 20px;*/
+}
+
+/*----------------------------------------*/
+/*----------------------------------------*/
+/*----------------------------------------*/
+
+.main {
+    position: relative;
+    justify-content: normal;
+    align-content: stretch;
+    align-items: center;
+    justify-items: center;
+    padding: 120px 0 0 0;
+    /*width: 100%;*/
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}

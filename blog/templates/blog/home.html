@@ -1,18 +1,24 @@
 {% extends 'blog/main.html' %}
+
 {% block main_section %}
-    <h1>
-        Новости проекта
-    </h1>
-    {% for post in news %}
-        <div class="alert alert">
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.text }}</p>
-            <span class="text-muted"><b>Дата:</b> {{ post.data|date:'j F Y, время: H:i:s' }}</span>
-            {% if post.author == 'Валерий' %}
-                <p><b>Автор:</b> <mark>Админ</mark></p>
-            {% else %}
-                <p><b>Автор:</b> <mark>{{ post.author }}</mark></p>
-            {% endif %}
+<h1>
+    Новости проекта
+</h1>
+{% for post in news %}
+<div class="post_item">
+    <div class="post_logo"></div>
+    <div class="post_container">
+        <div class="post_container_title">{{ post.title }}</div>
+        <div class="post_container_content">{{ post.text }}</div>
+        <div class="post_container_date">
+            <b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}
         </div>
-    {% endfor %}
+        {% if post.author == 'Валерий' %}
+        <div class="post_container_author"><b>Автор:</b> <mark>Админ</mark></div>
+        {% else %}
+        <div class="post_container_author"><b>Автор:</b> <mark>{{ post.author }}</mark></div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
 {% endblock main_section %}

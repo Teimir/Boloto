@@ -1,35 +1,40 @@
 {% extends 'blog/main.html' %}
 
 {% block main_section %}
-    <div>
-        <script>
-         let timeout;
-             function resetTimer() {
-                            // Очищаем предыдущий таймер
-                            clearTimeout(timeout);
+<div>
+    <script>
+        let timeout;
+        function resetTimer() {
+            // Очищаем предыдущий таймер
+            clearTimeout(timeout);
 
-                            // Устанавливаем новый таймер на 15 минут
-                            timeout = setTimeout(() => {
-                            location.reload(); // Обновляем страницу после 15 минут бездействия
-                            console.log("Скрипт 2 завершил работу");
-                         }, 15 * 60 * 1000);
-                    }
+            // Устанавливаем новый таймер на 15 минут
+            timeout = setTimeout(() => {
+                location.reload(); // Обновляем страницу после 15 минут бездействия
+                console.log("Скрипт 2 завершил работу");
+            }, 15 * 60 * 1000);
+        }
 
-                // Событие вызывается при любом действии пользователя, например, щелчок мыши или нажатие клавиши
-                document.addEventListener('mousemove', resetTimer);
-                document.addEventListener('keypress', resetTimer);
+        // Событие вызывается при любом действии пользователя, например, щелчок мыши или нажатие клавиши
+        document.addEventListener('mousemove', resetTimer);
+        document.addEventListener('keypress', resetTimer);
 
-                // Инициализация таймера
-                resetTimer();
-     </script>
+        // Инициализация таймера
+        resetTimer();
+    </script>
     {% for post in news %}
-        <div class="alert alert-light">
-
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.text }}</p>
-            <span class="text-muted"><b>Автор:</b> {{ post.author }}</span><br>
-            <span class="text-muted"><b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}</span>
+    <div class="post_item">
+        <div class="post_header">
+            <div class="post_logo"></div>
+            <div class="post_title">{{ post.title }}</div>
         </div>
-    {% endfor %}
+        <div class="post_container">
+            <div class="post_container_content">{{ post.text }}</div>
+            <div class="post_container_date">
+                <b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}
+            </div>
+        </div>
     </div>
+    {% endfor %}
+</div>
 {% endblock main_section %}
