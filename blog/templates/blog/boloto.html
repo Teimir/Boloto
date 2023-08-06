@@ -31,6 +31,7 @@
         <div class="post_container">
             <div class="post_container_content">{{ post.text }}</div>
             <div class="post_container_date">
+		<span class="text-muted"><b>Автор:</b> {{ post.author }}</span><br>
                 <b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}
             </div>
         </div>
