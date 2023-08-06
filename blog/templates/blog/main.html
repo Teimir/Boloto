@@ -29,6 +29,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/create">Написать пост</a>
                     </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">{{request.user}}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Создать аккаунт</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
