@@ -72,9 +72,11 @@
                             </li>
                             --->
                             {% if request.user.is_authenticated %}
-                            <li class="nav-item">
-                                <div class="menu_item_logo"></div>
-                                <ahref="/profile"><div class="menu_item_text">{{request.user}}</div></a>
+                            <li>
+                                <a class="menu_item" href="/profile">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">{{request.user}}</div>
+                                </a>
                             </li>
                             {% else %}
                             <li>
