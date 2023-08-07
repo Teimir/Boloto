@@ -46,10 +46,6 @@
     color: var(--post_container_content-color);
 }
 
-.post_item .post_container_date {
+.post_item .post_container_author {
     margin: 0.5em 0 0 0;
-}
-
-.body{
-   background-color: #D8E6D5;
 }
