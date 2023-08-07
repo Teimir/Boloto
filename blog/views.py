@@ -17,8 +17,6 @@ def home(request):
 
 @login_required(login_url='login')
 def create(request):
-    print(timezone.get_current_timezone_name())
-    print(timezone.now())
     error = ''
     if request.method == 'POST':
         form = NewForm(request.POST)
