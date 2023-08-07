@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -25,4 +27,4 @@ urlpatterns = [
     path('boloto/', views.boloto, name='boloto'),
     path("login/", views.loginView, name='login'),
     path("signup/", views.SignupView, name='signup'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

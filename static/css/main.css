@@ -1,0 +1,55 @@
+@import url('other.css');
+@import url('header.css');
+
+:root {
+    --header_logo-color: #0E2723;
+    --header-color: #0E2723;
+    --menu_button_active-color: #C9DBBB;
+    --back-color: #D8E6D5;
+    --back_post-color: #F9FFE7;
+    --post_container_title-color: #0E2723;
+    --post_container_content-color: #396E3E;
+    --border_post-color: #0E2723;
+    --text_header-color: #C9DBBB;
+    --text-color: #396E3E;
+}
+
+.post_item {
+    background-color: var(--back_post-color);
+    border: solid 1px var(--border_post-color);
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post_item .post_logo {
+    border-radius: 10%;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    /*position: relative;*/
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.post_item .post_title {
+    color: var(--post_container_title-color);
+    text-transform: uppercase;
+    clear: right;
+}
+
+.post_item .post_container_content {
+    color: var(--post_container_content-color);
+}
+
+.post_item .post_container_date {
+    margin: 0.5em 0 0 0;
+}
+
+.body{
+   background-color: #D8E6D5;
+}

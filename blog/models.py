@@ -10,10 +10,6 @@ class New(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-class Newa(models.Model):
-    title = models.CharField(max_length=100)
-    text = models.TextField()
-    data = models.DateTimeField(default=timezone.now)
 
 
 class Post(models.Model):
