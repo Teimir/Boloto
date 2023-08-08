@@ -6,18 +6,18 @@
 </h1>
 {% for post in news %}
 <div class="post_item">
-    <div class="post_logo"></div>
+    <div class="post_header">
+        <div class="post_logo"></div>
+        <div class="post_title">{{ post.title }}</div>
+    </div>
     <div class="post_container">
-        <div class="post_container_title">{{ post.title }}</div>
         <div class="post_container_content">{{ post.text }}</div>
+        <div class="post_container_author">
+            <b>Автор:</b> {{ post.author }}
+        </div>
         <div class="post_container_date">
             <b>Дата:</b> {{ post.data|date:'j F Y, время(общее): H:i:s' }}
         </div>
-        {% if post.author == 'Валерий' %}
-        <div class="post_container_author"><b>Автор:</b> <mark>Админ</mark></div>
-        {% else %}
-        <div class="post_container_author"><b>Автор:</b> <mark>{{ post.author }}</mark></div>
-        {% endif %}
     </div>
 </div>
 {% endfor %}

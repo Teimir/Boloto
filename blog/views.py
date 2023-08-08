@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.utils import timezone
+
 from .models import New, Post
 from .forms import NewForm, LoginForm, SignupForm
 from .models import User

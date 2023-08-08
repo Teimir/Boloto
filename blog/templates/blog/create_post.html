@@ -1,13 +1,19 @@
 {% extends 'blog/main.html' %}
 {% block main_section %}
-<h2>Написать пост</h2>
+<div class="post_item">
+<H1>Написать пост</H1>
 <form method="post">
     {% csrf_token %}
-    {{ form.title }}<br>
-    {{ form.text }}<br>
+    <div class="post_header">
+        <br>{{ form.title }}
+    </div>
+    <div class="post_container">
+        <br>{{ form.text }}<br><br>
     <span>
         {{error}}
     </span>
-    <button class="button-success" type="submit">Отправить</button>
+    </div>
+    <button class="button-success" type="submit"><H3>Отправить</H3></button>
 </form>
+</div>
 {% endblock main_section %}
