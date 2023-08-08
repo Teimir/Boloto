@@ -25,7 +25,7 @@ def create(request):
             form.save()
             return redirect("boloto")
         else:
-            error = "Не верная форма" + str(form)
+            error = "Отсутствует заголовок или текст поста"
     form = NewForm()
 
     data = {
