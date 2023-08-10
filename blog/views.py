@@ -84,6 +84,9 @@ def SignupView(request):
 def contacts(request):
     return render(request, 'blog/contacts.html', {'title': 'Страничка про Болото'})
 
+@login_required(login_url='login')
+def profileView (request):
+    return render(request, 'blog/main.html', {'title': 'Профиль'})
 
 def boloto(request):
     News = Post.objects.all()
