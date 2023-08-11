@@ -1,0 +1,13 @@
+{% extends 'blog/main.html' %}
+{% block main_section %}
+<h1>{{ user.username }}'s Profile</h1>
+
+{% if profile.profile_picture %}
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+{% endif %}
+
+{% if profile.bio %}
+    <p>{{ profile.bio }}</p>
+{% endif %}
+Пустовато, но мы это исправим
+{% endblock main_section %}

@@ -10,6 +10,10 @@ class New(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/')
+    bio = models.TextField(blank=True)
 
 
 class Post(models.Model):

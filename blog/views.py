@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
 
-from .models import New, Post
+from .models import New, Post, Profile
 from .forms import NewForm, LoginForm, SignupForm
 from .models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import QueryDict
+from django.shortcuts import render, get_object_or_404
 
 def home(request):
     data = {
@@ -85,8 +86,24 @@ def contacts(request):
     return render(request, 'blog/contacts.html', {'title': 'Страничка про Болото'})
 
 @login_required(login_url='login')
-def profileView (request):
-    return render(request, 'blog/main.html', {'title': 'Профиль'})
+def profile_view(request, username):
+    # Получить пользователя по его имени пользователя(username)
+    user = get_object_or_404(User, username=username)
+
+    try:
+        # Попытка получить профиль пользователя
+        profile = user.profile
+    except:
+        # Если профиль не существует, создайте его
+        profile = Profile(user=user)
+        profile.save()
+
+
+    context = {
+        'user': user,
+        'profile': profile
+    }
+    return render(request, 'blog/profile.html', context)
 
 def boloto(request):
     News = Post.objects.all()

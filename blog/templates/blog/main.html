@@ -73,7 +73,7 @@
                             --->
                             {% if request.user.is_authenticated %}
                             <li>
-                                <a class="menu_item" href="/profile">
+                                <a class="menu_item" href="{% url 'profile' username=request.user.username %}">
                                     <div class="menu_item_logo"></div>
                                     <div class="menu_item_text">{{request.user}}</div>
                                 </a>
