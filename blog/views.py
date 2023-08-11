@@ -98,12 +98,25 @@ def profile_view(request, username):
         profile = Profile(user=user)
         profile.save()
 
+    posts = get_user_posts(username)
 
     context = {
         'user': user,
-        'profile': profile
+        'profile': profile,
+        'posts': posts
     }
     return render(request, 'blog/profile.html', context)
+
+def get_user_posts(user):
+    posts = []
+    News = Post.objects.all()
+    News = list(reversed(News))
+    for i in range(len(News)):
+        print(News[i].author, user,str(News[i].author) == user)
+        if str(News[i].author) == user:
+            posts.append(News[i])
+    return posts
+
 
 def boloto(request):
     News = Post.objects.all()
