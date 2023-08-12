@@ -41,7 +41,7 @@ def create(request):
 def loginView(request):
     error = ''
     if request.method == 'POST':
-        username = request.POST["username"]
+        username = request.POST["username"].strip()
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -62,7 +62,7 @@ def loginView(request):
 def SignupView(request):
     error = ''
     if request.method == 'POST':
-        username = request.POST["username"]
+        username = request.POST["username"].strip()
         password = request.POST["password"]
         email = request.POST["email"]
         user = User.objects.create_user(username=username, password=password, email=email)
