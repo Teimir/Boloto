@@ -26,7 +26,7 @@
 
 .post_item .post_logo {
     border-radius: 10%;
-    background-image: url(../img/logo.png);
+    background-image: url(../img/Frame2.svg);
     background-repeat: no-repeat;
     background-size: auto;
     /*position: relative;*/
@@ -44,6 +44,8 @@
 
 .post_item .post_container_content {
     color: var(--post_container_content-color);
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .post_item .post_container_author {
