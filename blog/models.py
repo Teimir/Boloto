@@ -10,10 +10,11 @@ class New(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-class Newa(models.Model):
-    title = models.CharField(max_length=100)
-    text = models.TextField()
-    data = models.DateTimeField(default=timezone.now)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/')
+    bio = models.TextField(blank=True)
+
 
 class Post(models.Model):
     title = models.CharField(max_length=100)

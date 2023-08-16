@@ -25,6 +25,7 @@
                     </div>
                     <nav class="menu_body">
                         <ul class="menu_list">
+                            <!--
                             <li>
                                 <a class="menu_item" href="/other">
                                     <div class="menu_item_logo"></div>
@@ -37,23 +38,8 @@
                                     <div class="menu_item_text">Сообщения</div>
                                 </a>
                             </li>
-                            <li>
-                                {% if request.user.is_authenticated %}
-                                <a class="menu_item" href="/profile">
-                                    <div class="menu_item_logo"></div>
-                                    <div class="menu_item_text">{{request.user}}</div>
-                                </a>
-                                {% else %}
-                                <a class="menu_item" href="/login">
-                                    <div class="menu_item_logo"></div>
-                                    <div class="menu_item_text">Войти</div>
-                                </a>
-                                <a class="menu_item" href="/signup">
-                                    <div class="menu_item_logo"></div>
-                                    <div class="menu_item_text">Создать аккаунт</div>
-                                </a>
-                                {% endif %}
-                            </li>
+                            --->
+                            <!--Кто прочитал тот лох ;)-->
                             <li>
                                 <a class="menu_item" href="/boloto">
                                     <div class="menu_item_logo"></div>
@@ -72,12 +58,35 @@
                                     <div class="menu_item_text">Написать пост</div>
                                 </a>
                             </li>
+                            <!--
                             <li>
                                 <a class="menu_item" href="/settings">
                                     <div class="menu_item_logo"></div>
                                     <div class="menu_item_text">Настройки</div>
                                 </a>
                             </li>
+                            --->
+                            {% if request.user.is_authenticated %}
+                            <li>
+                                <a class="menu_item" href="{% url 'profile' username=request.user.username %}">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">{{request.user}}</div>
+                                </a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a class="menu_item" href="/login">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Войти</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="menu_item" href="/signup">
+                                    <div class="menu_item_logo"></div>
+                                    <div class="menu_item_text">Создать аккаунт</div>
+                                </a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
