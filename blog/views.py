@@ -108,7 +108,6 @@ def get_user_posts(user):
     News = Post.objects.all()
     News = list(reversed(News))
     for i in range(len(News)):
-        print(News[i].author, user,str(News[i].author) == user)
         if str(News[i].author) == user:
             posts.append(News[i])
     return posts
