@@ -17,7 +17,8 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100, default="") #Не даёт нужного результата, всё ещё требует заголовок
+    title = models.CharField(max_length=100, default="", blank=True, null=True) #Не даёт нужного результата, всё ещё требует заголовок
     text = models.TextField()
     data = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    img = models.FileField(upload_to='attachments/', blank=True)

@@ -1,11 +1,11 @@
 from .models import Post, User
-from django.forms import ModelForm, TextInput, Textarea, PasswordInput, EmailInput
+from django.forms import ModelForm, TextInput, Textarea, PasswordInput, EmailInput, FileInput
 
 
 class NewForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title','text', 'author']
+        fields = ['title','text', 'author', 'img']
 
         widgets = {
             'title': TextInput(attrs={
@@ -13,6 +13,10 @@ class NewForm(ModelForm):
                 'placeholder': "Заголовок квака",
             }),
             'text': Textarea(attrs={
+                'class': "form-control",
+                'placeholder': "Квакнуть",
+            }),
+            'img': FileInput(attrs={
                 'class': "form-control",
                 'placeholder': "Квакнуть",
             })
