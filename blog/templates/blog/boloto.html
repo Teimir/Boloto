@@ -40,7 +40,7 @@
             <span>
                  {% if post.img %}
                     {% if post.img.url|filesizeformat %}
-                        <p>Прикрепленный файл: <a href="{{ post.img.url }}">{{ post.img }}</a></p>
+                        <img src="{{ post.img.url }}"></img>
                     {% endif %}
                 {% endif %}
             </span>
