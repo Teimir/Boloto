@@ -26,9 +26,6 @@ SECRET_KEY = 'django-insecure-cu8#9#j48ckewbjg4=j*3wrz05zsztip8j+55u4=r*zdjxclvb
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '185.70.186.9', 'boloto.su']
-CORS_ORIGIN_WHITELIST = [
-    "https://boloto.su",
-]
 
 
 # Application definition
