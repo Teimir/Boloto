@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from corsheaders.defaults import default_headers
 import os
 from pathlib import Path
 
@@ -26,7 +27,15 @@ SECRET_KEY = 'django-insecure-cu8#9#j48ckewbjg4=j*3wrz05zsztip8j+55u4=r*zdjxclvb
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '185.70.186.9', 'boloto.su']
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'login'
+]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://boloto.su',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
