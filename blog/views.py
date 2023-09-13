@@ -10,8 +10,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import QueryDict
 from django.shortcuts import render, get_object_or_404
 
-def home(request):
-    return redirect("boloto")
 
 
 @login_required(login_url='login')
