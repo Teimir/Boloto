@@ -51,3 +51,8 @@
 .post_item .post_container_author {
     margin: 0.5em 0 0 0;
 }
+
+img {
+    display: block;
+    width: 100%;
+}
