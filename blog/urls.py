@@ -24,10 +24,9 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.home, name='blog-home'),
+    path('', views.boloto, name='boloto'),
     path('contacts/', views.contacts, name='blog-cont'),
     path('create/', views.create, name='create'),
-    path('boloto/', views.boloto, name='boloto'),
     path("login/", views.loginView, name='login'),
     path("signup/", views.SignupView, name='signup'),
 #    path('posts/create/', create_post_view, name='create_post'),
