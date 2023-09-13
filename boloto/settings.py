@@ -31,13 +31,8 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'login',
     'boloto.su'
 ]
+CSRF_TRUSTED_ORIGINS = ['https://*.boloto.su','https://*.127.0.0.1','https://*.185.70.186.9']
 
-CORS_ALLOWED_ORIGINS = [
-    'login',
-    'admin/login',
-    'https://boloto.su',
-    'boloto.su'
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
