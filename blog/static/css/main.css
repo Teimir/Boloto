@@ -53,6 +53,8 @@
 }
 
 img {
-    display: block;
-    width: 95%;
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
 }
