@@ -33,6 +33,8 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+    'login',
+    'admin/login'
     'https://boloto.su',
 ]
 
