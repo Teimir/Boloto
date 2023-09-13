@@ -28,11 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '185.70.186.9', 'boloto.su']
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    'login'
+    'login',
+    'boloto.su'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'boloto.su',
+    'https://boloto.su',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
