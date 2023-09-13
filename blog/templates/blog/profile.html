@@ -25,8 +25,10 @@
             <b>Автор:</b> {{ post.author }}
         </div>
         <span>
-            <div class="post_title">{{ post.title }}</div>
-        </span>
+                {% if post.title is not none %}
+                    <div class="post_title">{{ post.title }}</div>
+                {% endif %}
+       </span>
     </div>
     <div class="post_container">
         <div class="post_container_content">{{ post.text }}</div>
