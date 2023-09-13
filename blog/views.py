@@ -13,24 +13,26 @@ from django.shortcuts import render, get_object_or_404
 def home(request):
     return redirect("boloto")
 
+
 @login_required(login_url='login')
 def create(request):
     error = ''
     if request.method == 'POST':
         form = NewForm(request.POST, request.FILES)
-        form.data = QueryDict('csrfmiddlewaretoken='+form.data.__getitem__('csrfmiddlewaretoken')+'&title='+form.data.__getitem__('title')+'&text='+form.data.__getitem__('text')+'&author='+str(request.user.id), mutable=True)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect("boloto")
         else:
             error = "Отсутствует заголовок или текст поста"
-        
-    form = NewForm()
+    else:
+        form = NewForm()
 
     data = {
         'form': form,
         'error': error,
-        'title' : "Что cквакнуло!?"
+        'title': "Что cквакнуло!?"
     }
 
     return render(request, 'blog/create_post.html', data)
@@ -122,9 +124,6 @@ def boloto(request):
         'news': News,
         'title': 'Главная страница'
     }
-    for i in range(len(News)):
-        if News[i].img:
-            print(News[i].img.url, "|")
 
     return render(request, 'blog/boloto.html', data)
 
