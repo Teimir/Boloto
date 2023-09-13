@@ -1,7 +1,7 @@
  {% extends 'blog/main.html' %}
         {% block main_section %}
             <h2>Войти в аккаунт</h2>
-            <form method="post">
+            <form action="/login/" method="post">
                 {% csrf_token %}
                 {{ form.username }}<br>
                 {{ form.password }}<br>
