@@ -32,7 +32,7 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://boloto.su',
+    'boloto.su',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
