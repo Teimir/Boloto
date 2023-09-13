@@ -1,11 +1,12 @@
 from .models import Post, User
-from django.forms import ModelForm, TextInput, Textarea, PasswordInput, EmailInput
+from django.forms import ModelForm, TextInput, Textarea, PasswordInput, EmailInput, ImageField
 
 
 class NewForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title','text', 'author']
+        img = ImageField()
+        fields = ['title','text', 'img']
 
         widgets = {
             'title': TextInput(attrs={

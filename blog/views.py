@@ -1,37 +1,38 @@
+from django.contrib.sites import requests
 from django.shortcuts import render, redirect
 from django.utils import timezone
 
-from .models import New, Post
+from .models import New, Post, Profile
 from .forms import NewForm, LoginForm, SignupForm
 from .models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import QueryDict
+from django.shortcuts import render, get_object_or_404
 
 def home(request):
-    data = {
-        'news': New.objects.all(),
-        'title': 'Главная страница'
-    }
-    return render(request, 'blog/home.html', data)
+    return redirect("boloto")
+
 
 @login_required(login_url='login')
 def create(request):
     error = ''
     if request.method == 'POST':
-        form = NewForm(request.POST)
-        form.data = QueryDict('csrfmiddlewaretoken='+form.data.__getitem__('csrfmiddlewaretoken')+'&title='+form.data.__getitem__('title')+'&text='+form.data.__getitem__('text')+'&author='+str(request.user.id), mutable=True)
+        form = NewForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect("boloto")
         else:
             error = "Отсутствует заголовок или текст поста"
-    form = NewForm()
+    else:
+        form = NewForm()
 
     data = {
         'form': form,
         'error': error,
-        'title' : "Что cквакнуло!?"
+        'title': "Что cквакнуло!?"
     }
 
     return render(request, 'blog/create_post.html', data)
@@ -84,6 +85,37 @@ def SignupView(request):
 def contacts(request):
     return render(request, 'blog/contacts.html', {'title': 'Страничка про Болото'})
 
+@login_required(login_url='login')
+def profile_view(request, username):
+    # Получить пользователя по его имени пользователя(username)
+    user = get_object_or_404(User, username=username)
+
+    try:
+        # Попытка получить профиль пользователя
+        profile = user.profile
+    except:
+        # Если профиль не существует, создайте его
+        profile = Profile(user=user)
+        profile.save()
+
+    posts = get_user_posts(username)
+
+    context = {
+        'user': user,
+        'profile': profile,
+        'posts': posts
+    }
+    return render(request, 'blog/profile.html', context)
+
+def get_user_posts(user):
+    posts = []
+    News = Post.objects.all()
+    News = list(reversed(News))
+    for i in range(len(News)):
+        if str(News[i].author) == user:
+            posts.append(News[i])
+    return posts
+
 
 def boloto(request):
     News = Post.objects.all()
@@ -92,6 +124,9 @@ def boloto(request):
         'news': News,
         'title': 'Главная страница'
     }
+
     return render(request, 'blog/boloto.html', data)
+
+
 
 

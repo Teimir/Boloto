@@ -2,13 +2,15 @@
 {% block main_section %}
 <div class="post_item">
 <H1>Написать пост</H1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="post_header">
         <br>{{ form.title }}
     </div>
     <div class="post_container">
         <br>{{ form.text }}<br><br>
+    <div class="post_container">
+        <br>{{ form.img }}<br><br>
     <span>
         {{error}}
     </span>
