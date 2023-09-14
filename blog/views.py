@@ -17,13 +17,19 @@ def create(request):
     error = ''
     if request.method == 'POST':
         form = NewForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect("boloto")
+
+        #cooldown is 10 seconds
+        lastPost = list(reversed(Post.objects.filter(author_id = request.user)))[0]
+        if timezone.now().timestamp() - lastPost.date.timestamp() > 10:
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return redirect("boloto")
+            else:
+                error = "Отсутствует заголовок или текст поста"
         else:
-            error = "Отсутствует заголовок или текст поста"
+            error = "Нельзя создавать посты так часто. Попробуйте позже"
     else:
         form = NewForm()
 
@@ -106,13 +112,7 @@ def profile_view(request, username):
     return render(request, 'blog/profile.html', context)
 
 def get_user_posts(user):
-    posts = []
-    News = Post.objects.all()
-    News = list(reversed(News))
-    for i in range(len(News)):
-        if str(News[i].author) == user:
-            posts.append(News[i])
-    return posts
+    return list(reversed(Post.objects.filter(author__username = user)))
 
 
 def boloto(request):
