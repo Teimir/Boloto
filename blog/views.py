@@ -18,9 +18,14 @@ def create(request):
     if request.method == 'POST':
         form = NewForm(request.POST, request.FILES)
 
+        cooldowntime = 0
         #cooldown is 10 seconds
-        lastPost = list(reversed(Post.objects.filter(author_id = request.user)))[0]
-        if timezone.now().timestamp() - lastPost.date.timestamp() > 10:
+        try:
+            lastPost = list(reversed(Post.objects.filter(author_id = request.user)))[0]
+            cooldowntime = timezone.now().timestamp() - lastPost.date.timestamp()
+        except:
+            cooldowntime = 100
+        if cooldowntime > 10:
             if form.is_valid():
                 post = form.save(commit=False)
                 post.author = request.user
