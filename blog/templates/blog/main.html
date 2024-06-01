@@ -8,9 +8,15 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>{{ title }}</title>
+
+    <script src="https://kit.fontawesome.com/5f49d71526.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/other.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/login-form.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/singup-form.css' %}" type="text/css">
+
 </head>
 
 <body>
@@ -65,7 +71,7 @@
                                     <div class="menu_item_text">Настройки</div>
                                 </a>
                             </li>
-                            --->
+                            -->
                             {% if request.user.is_authenticated %}
                             <li>
                                 <a class="menu_item" href="{% url 'profile' username=request.user.username %}">
@@ -78,12 +84,6 @@
                                 <a class="menu_item" href="/login">
                                     <div class="menu_item_logo"></div>
                                     <div class="menu_item_text">Войти</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="menu_item" href="/signup">
-                                    <div class="menu_item_logo"></div>
-                                    <div class="menu_item_text">Создать аккаунт</div>
                                 </a>
                             </li>
                             {% endif %}

@@ -1,0 +1,61 @@
+.login-form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form__item {
+    margin-bottom: 15px;
+}
+
+.login-form__item label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.login-form__item input[type="text"],
+.login-form__item input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.login-form__error {
+    color: #c00;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.login-form__error:empty {
+    display: none;
+}
+
+.enter {
+    margin-bottom: 10px;
+}
+
+.registr {
+    margin-top: 10px;
+}
+
+.button-css {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-css:hover {
+    background-color: #45a049;
+}

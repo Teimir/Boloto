@@ -1,14 +1,26 @@
- {% extends 'blog/main.html' %}
-        {% block main_section %}
-            <h2>Войти в аккаунт</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.username }}<br>
-                {{ form.email }}<br>
-                {{ form.password }}<br>
-                <span>
-                    {{error}}
-                </span>
-                <button class="button-success" type="submit">Отправить</button>
-            </form>
-        {% endblock main_section %}
+{% extends 'blog/main.html' %}
+{% block main_section %}
+    <div class="singup-form">
+        <h2 class="reg">Регистрация</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="singup-form__item">
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
+            </div>
+            <div class="singup-form__item">
+                <label for="password">Почта</label>
+                {{ form.email }}
+            </div>
+            <div class="singup-form__item">
+                <label for="password">Пароль</label>
+                {{ form.password }}
+            </div>
+            <span class="singup-form__error">
+                {{error}}
+            </span>
+            <button class="button-success" class="button-css" type="submit">Регистрация</button>
+        </form>
+        <h3 class="ent"><a href="{% url 'login' %}">Уже есть аккаунт</a></h3>
+    </div>
+{% endblock main_section %}

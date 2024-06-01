@@ -1,13 +1,24 @@
- {% extends 'blog/main.html' %}
-        {% block main_section %}
-            <h2>Войти в аккаунт</h2>
-            <form action="/login/" method="post">
-                {% csrf_token %}
-                {{ form.username }}<br>
-                {{ form.password }}<br>
-                <span>
-                    {{error}}
-                </span>
-                <button class="button-success" type="submit">Отправить</button>
-            </form>
-        {% endblock main_section %}
+{% extends 'blog/main.html' %}
+{% block main_section %}
+    <div class="login-form">
+        <h2 class="enter">Войти</h2>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <div class="login-form__item">
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
+            </div>
+            <div class="login-form__item">
+                <label for="password">Пароль</label>
+                {{ form.password }}
+            </div>
+            <span class="login-form__error">
+                {{error}}
+            </span>
+            <button class="button-success" class="button-css" type="submit">Войти</button>
+        </form>
+        <h3 class="registr"><a href="{% url 'signup' %}">Регистрация</a></h3>
+    </div>
+{% endblock main_section %}
+
+
