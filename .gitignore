@@ -91,3 +91,8 @@ media/
 .env
 db.sqlite3
 boloto/settings.py
+
+# ignore venv files
+Lib/
+Scripts/
+pyvenv.cfg
