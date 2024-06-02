@@ -1,23 +1,6 @@
 {% extends 'blog/main.html' %}
 {% block main_section %}
-<div class="profile_header">
 
-    <div class="header_container">
-        {% if profile.profile_picture %}
-        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
-        {% else %}
-        <div class="header_logo"></div>
-        {% endif %}
-        <h1>Профиль {{ user.username }}</h1>
-    </div>
-</div>
-
-<br> Био <br>
-{% if profile.bio %}
-<p>{{ profile.bio }}</p>
-{% endif %}
-
-{% for post in posts %}
 <div class="post_item">
     <div class="post_header">
         <div class="post_logo"></div>
@@ -33,11 +16,49 @@
                      </a>
                 {% endif %}
        </span>
+    </div>
+    <div class="post_container">
+            <div class="post_container_content">{{ post.text }}</div>
+            <span>
+                 {% if post.img %}
+                    {% if post.img.url|filesizeformat %}
+                        <img src="{{ post.img.url }}"  width="800" height="600" alt="lorem">
+                    {% endif %}
+                {% endif %}
+            </span>
+            <div class="post_container_date">
+                <b>Дата:</b> {{ post.date|date:'j F Y, время(общее): H:i:s' }}
+            </div>
+        </div>
+</div>
+
+<span>
+    <a href="/answer/{{ post.id_post }}/">
+                     ОТВЕТИТЬ
+    </a>
+</span>
+
+
+{% for post in children %}
+<div class="post_item">
+    <div class="post_header">
+        <div class="post_logo"></div>
+         <a href="/profile/{{ post.author }}/">
+        <div class="post_container_author">
+            <b>Автор:</b> {{ post.author }}
+        </div>
+         </a>
+        <span>
+                {% if post.title is not none %}
+                    <div class="post_title">{{ post.title }}</div>
+                {% endif %}
+       </span>
+
         <span>
                  <a href="/post/{{ post.id_post }}/">
                      ОТКРЫТЬ ПОСТ
                  </a>
-            </span>
+        </span>
     </div>
     <div class="post_container">
             <div class="post_container_content">{{ post.text }}</div>
@@ -54,5 +75,6 @@
         </div>
 </div>
 {% endfor %}
+
 
 {% endblock main_section %}

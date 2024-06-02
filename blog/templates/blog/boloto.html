@@ -2,37 +2,26 @@
 
 {% block main_section %}
 <div>
-    <script>
-        let timeout;
-        function resetTimer() {
-            // Очищаем предыдущий таймер
-            clearTimeout(timeout);
-
-            // Устанавливаем новый таймер на 15 минут
-            timeout = setTimeout(() => {
-                location.reload(); // Обновляем страницу после 15 минут бездействия
-                console.log("Скрипт 2 завершил работу");
-            }, 15 * 60 * 1000);
-        }
-
-        // Событие вызывается при любом действии пользователя, например, щелчок мыши или нажатие клавиши
-        document.addEventListener('mousemove', resetTimer);
-        document.addEventListener('keypress', resetTimer);
-
-        // Инициализация таймера
-        resetTimer();
-    </script>
     {% for post in news %}
     <div class="post_item">
         <div class="post_header">
             <div class="post_logo"></div>
+            <a href="/profile/{{ post.author }}/">
             <div class="post_container_author">
                 <b>Автор:</b> {{ post.author }}
             </div>
+            </a>
             <span>
-                {% if post.title is not none %}
-                    <div class="post_title">{{ post.title }}</div>
+                {% if post.parent_post is not none %}
+                     <a href="/post/{{ post.parent_post.id_post }}/">
+                            <div class="post_title">Ответ на пост {{ post.parent_post.author }}</div>
+                     </a>
                 {% endif %}
+            </span>
+            <span>
+                 <a href="/post/{{ post.id_post }}/">
+                     ОТКРЫТЬ ПОСТ
+                 </a>
             </span>
         </div>
         <div class="post_container">
@@ -47,6 +36,7 @@
             <div class="post_container_date">
                 <b>Дата:</b> {{ post.date|date:'j F Y, время(общее): H:i:s' }}
             </div>
+
         </div>
     </div>
     {% endfor %}

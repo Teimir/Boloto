@@ -91,6 +91,7 @@ media/
 .env
 db.sqlite3
 boloto/settings.py
+profile_pictures/
 
 # ignore venv files
 Lib/

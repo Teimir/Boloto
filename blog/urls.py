@@ -32,5 +32,7 @@ urlpatterns = [
 #    path('posts/create/', create_post_view, name='create_post'),
 #    path('posts/<int:pk>/', post_detail_view, name='post_detail'),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
-    path('profile/<username>/', views.profile_view, name='profile')
+    path('profile/<username>/', views.profile_view, name='profile'),
+    path('post/<int:id_post>/', views.post_str, name='post'),
+    path('answer/<int:id_post>/', views.create_ans, name='create'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
